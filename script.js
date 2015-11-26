@@ -1,29 +1,36 @@
 function FizzBuzz() {
-    for (var i=1; i<=100; i++) {
-        if (i%15===0) {
-        LogFizzBuzzResults("FizzBuzz")
+var text=$("#start").val();
+
+
+        if (text%15===0) {
+        LogFizzBuzzResults("FizzBuzz");
         }
-        else if (i%5===0) {
-        LogFizzBuzzResults("Buzz")
+        else if (text%5===0) {
+        LogFizzBuzzResults("Buzz");
             }
-        else if (i%3===0) {
-        LogFizzBuzzResults("Fizz")
+        else if (text%3===0) {
+        LogFizzBuzzResults("Fizz");
         }
         else {
-        LogFizzBuzzResults(i)
-      }
+        LogFizzBuzzResults(text);
     }
 }
 
 function LogFizzBuzzResults(text) {
-  var new_li = $("<li>"+
-                   text+
-                  "</li>"
-);
-
-$("#results").append(new_li);
+  $("#results").html('the answer is: '+text);
 }
 
-$(function(){
-    $('#start').click(FizzBuzz);
-});
+$(function () {
+  $("#start").keypress(function(event) {
+      if (event.which === 13) {
+          event.preventDefault();
+          FizzBuzz();
+          $("#start").val('');
+  }}
+)}
+);
+
+
+//$(function(){
+//    $('#start').keyup(FizzBuzz);
+// });
